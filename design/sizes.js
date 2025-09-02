@@ -1,5 +1,6 @@
 export default {
-    border_radius: 10,
+    border_radius: 7,
+
     border_circle: 90,
     margin_horizontal: 20,
 

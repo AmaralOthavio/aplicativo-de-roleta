@@ -1,14 +1,11 @@
 import {StyleSheet, View, ScrollView} from 'react-native'
 import {useNavigation} from "@react-navigation/native";
 import Header from "../components/Header";
-import FormCadastro from "../components/FormCadastro";
-import BtnCont from "../components/BtnCont";
 import sizes from "../design/sizes"
 import colors from "../design/colors"
-import EmptyList from "../components/EmptyList";
-import Search from "../components/Search";
-import Card from "../components/Card";
 import {useEffect, useState} from "react";
+import Botao from "../components/Botao";
+import RoletaIlustrativa from "../components/RoletaIlustrativa";
 
 export default function HomeScreen() {
 
@@ -70,53 +67,25 @@ export default function HomeScreen() {
     }
 
     return (
-        <ScrollView>
+        <ScrollView style={styles.container}>
             <Header/>
-            <FormCadastro
-                fnCadastrar={cadastrarTarefa}
-                texto={textCadastro}
-                setTexto={setTextCadastro}
-            />
-
-            <View style={styles.containerBotoes}>
-                <BtnCont titulo={"Tarefas criadas"} numero={totalCriado}/>
-                <BtnCont titulo={"Concluídas"} numero={totalConcluido} eVerde={true}/>
+            <View style={styles.container_btn}>
+                <Botao texto={"CRIAR NOVA ROLETA"} cor={"verde"}/>
+                <Botao texto={"MODELOS PRONTOS"} cor={"vermelho"}/>
             </View>
-            <Search
-                pesquisa = {pesquisa}
-                setPesquisa={setPesquisa}
-            />
-
-            {lista.length === 0 && <EmptyList/>}
-            {lista
-                .sort(function( a, b ) {
-                    return a.concluido - b.concluido
-                })
-                .map(function (item, index) {
-                if (item.titulo.toLowerCase().includes(pesquisa.toLowerCase())) {
-                    return (
-                        <Card
-                            key={index}
-                            texto={item.titulo}
-                            ativo={!item.concluido}
-                            fnExcluir={() => excluirTarefa(index)}
-                            fnConcluir={() => concluirTarefa(index)}
-                        />
-                    )
-                }
-            })}
+            <RoletaIlustrativa/>
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    containerBotoes: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        marginHorizontal: sizes.margin_horizontal,
-        marginTop: sizes.padding_large,
-        paddingBottom: sizes.padding_large,
-        borderBottomWidth: 2,
-        borderBottomColor: colors.gray_330
+    container: {
+        backgroundColor: colors.azul_escuro,
+
+    },
+    container_btn: {
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 15
     }
 })

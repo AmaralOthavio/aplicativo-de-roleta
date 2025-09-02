@@ -11,13 +11,14 @@ export default function Header() {
 
 const styles = StyleSheet.create({
     container: {
-        height: 200,
+        margin_top: 300,
+        height: 400,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.gray_330,
+        backgroundColor: colors.azul_escuro,
     },
     img: {
-        height: 50,
-        width: 130,
+        height: 300     ,
+        max_width: 400,
     }
 })
