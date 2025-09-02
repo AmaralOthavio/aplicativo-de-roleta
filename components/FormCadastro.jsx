@@ -1,39 +1,51 @@
-import React, { useState } from "react";
+import {Image, StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
+import colors from "../design/colors";
+import sizes from "../design/sizes";
 
-export default function FormCadastro({ onCalcular }) {
-    const [nome, setNome] = useState("");
-    const [peso, setPeso] = useState("");
-    const [altura, setAltura] = useState("");
-
+export default function FormCadastro({fnCadastrar, texto, setTexto}) {
     return (
-        <div className="bg-white rounded-2xl shadow p-4 mb-4">
-            <h2 className="font-bold text-lg text-blue-700 mb-3">Seus Dados</h2>
-            <input
-                className="w-full border rounded-lg p-2 mb-2"
-                placeholder="Nome"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-            />
-            <input
-                className="w-full border rounded-lg p-2 mb-2"
-                placeholder="Peso (em kg)"
-                type="number"
-                value={peso}
-                onChange={(e) => setPeso(e.target.value)}
-            />
-            <input
-                className="w-full border rounded-lg p-2 mb-2"
-                placeholder="Altura (cm)"
-                type="number"
-                value={altura}
-                onChange={(e) => setAltura(e.target.value)}
-            />
-            <button
-                className="w-full bg-blue-600 text-white rounded-lg p-2 font-bold"
-                onClick={() => onCalcular({ nome, peso, altura })}
-            >
-                Calcular Meta
-            </button>
-        </div>
-    );
+        <View style={styles.container}>
+            <TextInput style={styles.input}
+                       onChangeText={setTexto}
+                       value={texto}
+                       placeholder={"Adicione uma nova tarefa"}/>
+            <TouchableOpacity
+                onPress={fnCadastrar}
+                style={styles.btn}>
+                <Image style={styles.img} source={require("../assets/add.png")}/>
+            </TouchableOpacity>
+        </View>
+    )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: "row",
+        gap: 10,
+        height: 70,
+        marginTop: -35
+    },
+    input: {
+        backgroundColor: colors.white,
+        borderWidth: 1,
+        borderColor: colors.gray_330,
+        borderRadius: sizes.border_radius,
+        color: colors.gray_500,
+        fontSize: sizes.size_title,
+        padding: sizes.padding_medium,
+        width: "70%",
+        marginLeft: 20,
+        elevation: 2
+    },
+    btn: {
+        backgroundColor: colors.purple_dark,
+        borderRadius: sizes.border_radius,
+        width: "16%",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    img: {
+        height: 30,
+        resizeMode: "contain",
+    }
+})

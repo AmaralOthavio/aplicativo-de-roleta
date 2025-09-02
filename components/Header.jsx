@@ -1,10 +1,23 @@
-import React from "react";
+import {Image, View, StyleSheet, Dimensions} from "react-native";
+import colors from "../design/colors";
 
 export default function Header() {
     return (
-        <div className="flex flex-col items-center py-4">
-            <img src="/logo.png" alt="Logo" className="w-14 h-14 mb-2" />
-            <h1 className="text-blue-600 font-bold text-xl">Gota d'Água</h1>
-        </div>
-    );
+        <View style={styles.container}>
+            <Image style={styles.img} source={require('../assets/Logo.png')} />
+        </View>
+    )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        height: 200,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.gray_330,
+    },
+    img: {
+        height: 50,
+        width: 130,
+    }
+})

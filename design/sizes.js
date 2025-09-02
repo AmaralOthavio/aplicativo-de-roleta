@@ -14,5 +14,4 @@ export default {
     padding_medium: 15,
     padding_large: 25,
     padding_xlarge: 50
-
 }
