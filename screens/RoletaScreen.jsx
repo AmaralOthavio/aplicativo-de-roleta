@@ -1,4 +1,4 @@
-// App.js (ou sua tela)
+
 import React, { useState } from "react";
 import { SafeAreaView, Text } from "react-native";
 import SpinningWheel from "../components/SpinningWheel";
