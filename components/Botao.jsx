@@ -9,8 +9,11 @@ export default function Botao({ cor, texto, funcao = () => true }) {
         width: 296,
         alignItems: "center",
         justifyContent: "center",
-        boxShadow: "12",
-        borderRadius: sizes.border_radius
+        borderRadius: sizes.border_radius,
+        shadowColor: 'rgb(0, 0, 0)',
+        shadowOpacity: 1,
+        elevation: 6,
+        shadowRadius: 26,
     }
 
     if (cor === "verde") {

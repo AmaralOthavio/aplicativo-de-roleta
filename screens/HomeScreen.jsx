@@ -67,21 +67,22 @@ export default function HomeScreen() {
     }
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <Header/>
             <View style={styles.container_btn}>
                 <Botao texto={"CRIAR NOVA ROLETA"} cor={"verde"}/>
                 <Botao texto={"MODELOS PRONTOS"} cor={"vermelho"}/>
             </View>
             <RoletaIlustrativa/>
-        </ScrollView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.azul_escuro,
-
+        height: "100%",
+        flex: 1,
     },
     container_btn: {
         alignItems: "center",
