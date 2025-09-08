@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native'
+import {StyleSheet, View, ScrollView} from 'react-native'
 import {useNavigation} from "@react-navigation/native";
 import Header from "../components/Header";
 import sizes from "../design/sizes"
@@ -8,7 +8,6 @@ import Botao from "../components/Botao";
 import RoletaIlustrativa from "../components/RoletaIlustrativa";
 
 export default function HomeScreen() {
-    const navigation = useNavigation(); // <--- aqui
 
     const [lista, setLista] = useState([])
     const [totalCriado, setTotalCriado] = useState(0)
@@ -18,13 +17,18 @@ export default function HomeScreen() {
 
     useEffect(() => {
         var totalConcluidos = lista.filter((item => item.concluido))
+
         var totalNaoConcluidos = lista.filter((item => !item.concluido))
+
         setTotalConcluido(totalConcluidos.length)
         setTotalCriado(totalNaoConcluidos.length)
+
     }, [lista]);
+
 
     function cadastrarTarefa(){
         let listaAux = [...lista]
+
         if (textCadastro.trim() === "") {
             alert("Nomeie a tarefa antes de adicioná-la")
             return false
@@ -35,13 +39,22 @@ export default function HomeScreen() {
                 return false
             }
         }
-        listaAux.push({ titulo: textCadastro, concluido: false })
+
+        listaAux.push({
+            titulo: textCadastro,
+            concluido: false
+        })
         setLista(listaAux)
+
+        console.log(listaAux)
+
         setTextCadastro("")
+        setLista(listaAux)
     }
 
     function concluirTarefa(index){
         var listaAux = [...lista]
+
         listaAux[index].concluido = !listaAux[index].concluido
         setLista(listaAux)
     }
@@ -50,25 +63,25 @@ export default function HomeScreen() {
         var listaAux = [...lista]
         listaAux.splice(index, 1)
         setLista(listaAux)
+
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Header/>
             <View style={styles.container_btn}>
-                <Botao texto={"CRIAR NOVA ROLETA"} cor={"verde"} funcao={() => navigation.navigate('NovaRoleta')}/>
-                <Botao texto={"MODELOS PRONTOS"} cor={"vermelho"} funcao={() => navigation.navigate('ModelosProntos')}/>
+                <Botao texto={"CRIAR NOVA ROLETA"} cor={"verde"}/>
+                <Botao texto={"MODELOS PRONTOS"} cor={"vermelho"}/>
             </View>
             <RoletaIlustrativa/>
-        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.azul_escuro,
-        height: "100%",
-        flex: 1,
+
     },
     container_btn: {
         alignItems: "center",
