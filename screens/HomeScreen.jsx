@@ -8,55 +8,13 @@ import Botao from "../components/Botao";
 import RoletaIlustrativa from "../components/RoletaIlustrativa";
 
 export default function HomeScreen() {
-    const navigation = useNavigation(); // <--- aqui
-
-    const [lista, setLista] = useState([])
-    const [totalCriado, setTotalCriado] = useState(0)
-    const [totalConcluido, setTotalConcluido] = useState(0)
-    const [textCadastro, setTextCadastro] = useState("")
-    const [pesquisa, setPesquisa] = useState("")
-
-    useEffect(() => {
-        var totalConcluidos = lista.filter((item => item.concluido))
-        var totalNaoConcluidos = lista.filter((item => !item.concluido))
-        setTotalConcluido(totalConcluidos.length)
-        setTotalCriado(totalNaoConcluidos.length)
-    }, [lista]);
-
-    function cadastrarTarefa(){
-        let listaAux = [...lista]
-        if (textCadastro.trim() === "") {
-            alert("Nomeie a tarefa antes de adicioná-la")
-            return false
-        }
-        for (let i = 0; i < lista.length; i++) {
-            if (textCadastro.toLowerCase() === lista[i].titulo.toLowerCase()) {
-                alert("Já existe uma tarefa com esse nome")
-                return false
-            }
-        }
-        listaAux.push({ titulo: textCadastro, concluido: false })
-        setLista(listaAux)
-        setTextCadastro("")
-    }
-
-    function concluirTarefa(index){
-        var listaAux = [...lista]
-        listaAux[index].concluido = !listaAux[index].concluido
-        setLista(listaAux)
-    }
-
-    function excluirTarefa(index){
-        var listaAux = [...lista]
-        listaAux.splice(index, 1)
-        setLista(listaAux)
-    }
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
             <Header/>
             <View style={styles.container_btn}>
-                <Botao texto={"CRIAR NOVA ROLETA"} cor={"verde"} funcao={() => navigation.navigate('NovaRoleta')}/>
+                <Botao texto={"CRIAR NOVA ROLETA"} cor={"verde"} funcao={() => navigation.navigate('NovaRoletaScreen')}/>
                 <Botao texto={"MODELOS PRONTOS"} cor={"vermelho"} funcao={() => navigation.navigate('ModelosProntos')}/>
             </View>
             <RoletaIlustrativa/>

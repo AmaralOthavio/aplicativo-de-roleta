@@ -22,15 +22,37 @@ export default function Botao({ cor, texto, funcao = () => true }) {
     else if (cor === "vermelho") {
         botao.backgroundColor = colors.vermelho
     }
+    else if (cor === "rosa") {
+        botao.backgroundColor = colors.rosa
+    }
+    else if (cor === "preto") {
+        botao.backgroundColor = colors.black
+    }
+    else if (cor === "ciano") {
+        botao.backgroundColor = colors.ciano
+    }
+    else if (cor === "roxo") {
+        botao.backgroundColor = colors.roxo
+    }
 
     return (
         <TouchableOpacity style={botao} onPress={funcao}>
-            <Text>{texto}</Text>
+            <Text style={styles.texto}>{texto}</Text>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
-
+    texto: {
+        color: colors.white,
+        fontFamily: 'Baloo-Regular',
+        shadowColor: colors.black,
+        textShadowColor: 'black',
+        textShadowRadius: 9,
+        textShadowOffset: {
+            width: 0,
+            height: 0,
+        },
+    }
 })
 
