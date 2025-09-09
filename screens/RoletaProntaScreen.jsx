@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { SafeAreaView, Text, Modal, View, Button, StyleSheet } from "react-native";
+import { SafeAreaView, Text, Modal, View, Button, StyleSheet, TouchableOpacity } from "react-native";
 import SpinningWheel from "../components/SpinningWheel";
+import Botao from "../components/Botao";
 
 export default function RoletaScreen() {
     const [resultado, setResultado] = useState(null);
-    const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisivel, setModalVisivel] = useState(false);
     const [items, setItems] = useState([
-        "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"
+        "Azul", "Amarelo", "Verde", "Preto", "Vermelho", "Roxo", "Rosa",
+        "Cinza", "Branco", "Laranja", "Marrom"
     ]);
 
     const removendoOpcao = () => {
         setItems(prevItems => prevItems.filter(item => item !== resultado));
-        setModalVisible(false);
+        setModalVisivel(false);
         setResultado(null);
     };
 
@@ -22,7 +24,7 @@ export default function RoletaScreen() {
                 items={items}
                 onSelect={(r) => {
                     setResultado(r.label);
-                    setModalVisible(true);
+                    setModalVisivel(true);
                 }}
             />
 
@@ -30,33 +32,33 @@ export default function RoletaScreen() {
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => setModalVisible(false)}
+                visivel={modalVisivel}
+                onRequestClose={() => setModalVisivel(false)}
             >
-                <View style={styles.modalOverlay}>
+                <View style={styles.fundoEscurecido}>
                     <View style={styles.modalContainer}>
                         <Text style={styles.modalText}>Resultado: {resultado}</Text>
-                        <Button title="Remover Opção" onPress={removendoOpcao} />
-                        <Button title="Fechar" onPress={() => setModalVisible(false)} />
+                        <Botao texto={"REMOVER OPÇÃO"} cor={"vermelho"} onPress={removendoOpcao} />
+                        <Botao texto={"FECHAR"} cor={"verde"} onPress={() => setModalVisivel(false)} />
                     </View>
                 </View>
             </Modal>
 
-            {resultado && <Text style={{ marginTop: 12 }}>Sorteado: {resultado}</Text>}
+            {resultado && <Text style={styles.marginTop}>Sorteado: {resultado}</Text>}
         </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
-    modalOverlay: {
+    fundoEscurecido: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "rgba(0, 0, 0, 0.5)",
     },
     modalContainer: {
-        width: 300,
-        padding: 20,
+        width: 350,
+        padding: 25,
         backgroundColor: "white",
         borderRadius: 10,
         alignItems: "center",
@@ -64,5 +66,9 @@ const styles = StyleSheet.create({
     modalText: {
         fontSize: 18,
         marginBottom: 15,
+        fontFamily: 'Baloo-Regular',
+    },
+    marginTop: {
+        marginTop: 12,
     }
 });

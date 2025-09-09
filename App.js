@@ -5,6 +5,7 @@ import NovaRoletaScreen from "./screens/NovaRoletaScreen.jsx";
 import ModelosProntos from "./screens/ModelosProntos.jsx";
 import HomeScreen from "./screens/HomeScreen.jsx";
 import RoletaScreen from "./screens/RoletaScreen.jsx";
+import RoletaProntaScreen from "./screens/RoletaProntaScreen.jsx";
 
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
