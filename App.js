@@ -22,10 +22,20 @@ export default function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator id={"1"}>
+<<<<<<< Updated upstream
                 <Stack.Screen name="RoletaProntaCores" component={RoletaProntaCores} options={{ headerShown: false }} />
                 <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
                 <Stack.Screen name="NovaRoletaScreen" component={NovaRoletaScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="ModelosProntos" component={ModelosProntos} options={{ headerShown: false }} />
+=======
+                <Stack.Screen name="NovaRoletaScreen" component={NovaRoletaScreen} options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    options={{ headerShown: false }} name="Home" component={HomeScreen}
+                />
+                <Stack.Screen name="ModelosProntos" component={ModelosProntos} options={{ headerShown: false }}
+                />
+>>>>>>> Stashed changes
             </Stack.Navigator>
         </NavigationContainer>
     );
