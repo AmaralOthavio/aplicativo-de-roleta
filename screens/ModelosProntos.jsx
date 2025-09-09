@@ -50,12 +50,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         height: 150,
         gap: 30,
-        marginLeft: 15,
     },
     container_btn: {
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
         gap: 10,
     },

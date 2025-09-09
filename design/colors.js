@@ -3,6 +3,7 @@ export default {
     azul_escuro: '#5f36d1',
     verde: '#41DC4B',
     vermelho: '#FF7F73',
+    cinza: '#d5cac9',
 
     purple_light: '#DDD2EF',
     purple_base: "#9359f3",
